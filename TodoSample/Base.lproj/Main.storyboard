@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,91 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TodoSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UUP-oa-pSW">
+                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todoCell" id="phf-4J-0F1" customClass="TodoCell" customModule="TodoSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phf-4J-0F1" id="AmI-xh-LTA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sY7-W9-Clp">
+                                                    <rect key="frame" x="9" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Xm5-Kg-qEt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-1g-2c9">
+                                                    <rect key="frame" x="67" y="0.0" width="299" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bT2-1g-2c9" firstAttribute="leading" secondItem="sY7-W9-Clp" secondAttribute="trailing" constant="18" id="97g-dt-OIo"/>
+                                                <constraint firstItem="sY7-W9-Clp" firstAttribute="leading" secondItem="AmI-xh-LTA" secondAttribute="leadingMargin" constant="-7" id="CLD-OK-A6a"/>
+                                                <constraint firstItem="bT2-1g-2c9" firstAttribute="centerY" secondItem="AmI-xh-LTA" secondAttribute="centerY" id="Kud-F0-vsV"/>
+                                                <constraint firstItem="sY7-W9-Clp" firstAttribute="top" secondItem="AmI-xh-LTA" secondAttribute="top" id="VTg-5A-856"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sY7-W9-Clp" secondAttribute="bottom" constant="-7" id="eVn-mM-grj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bT2-1g-2c9" secondAttribute="trailing" constant="-7" id="gLt-Qh-c6k"/>
+                                                <constraint firstItem="bT2-1g-2c9" firstAttribute="top" secondItem="sY7-W9-Clp" secondAttribute="top" id="k3n-m7-F9O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todoCheckIcon" destination="sY7-W9-Clp" id="vVy-hF-ZMV"/>
+                                            <outlet property="todoTitle" destination="bT2-1g-2c9" id="JP7-nn-ml3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todos!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSm-s5-CGv">
+                                <rect key="frame" x="130" y="57" width="115" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="aBg-AW-k7s"/>
+                                    <constraint firstAttribute="height" constant="48" id="lzk-ht-aJd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCn-gk-aUb">
+                                <rect key="frame" x="321" y="36" width="36" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kza-Or-gDx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HSm-s5-CGv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="78e-qp-KUu"/>
+                            <constraint firstItem="CCn-gk-aUb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ih1-xy-Wqc"/>
+                            <constraint firstItem="UUP-oa-pSW" firstAttribute="top" secondItem="HSm-s5-CGv" secondAttribute="bottom" constant="8" id="J2I-24-Tzw"/>
+                            <constraint firstItem="CCn-gk-aUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="T4P-qM-nyN"/>
+                            <constraint firstItem="UUP-oa-pSW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tek-mo-jA2"/>
+                            <constraint firstItem="HSm-s5-CGv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="VP3-Ee-Fm6"/>
+                            <constraint firstItem="UUP-oa-pSW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Y7T-ZS-0gL"/>
+                            <constraint firstItem="UUP-oa-pSW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YlH-iK-wIa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="todoTableView" destination="UUP-oa-pSW" id="V8f-EI-P3d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
         </scene>
     </scenes>
 </document>
